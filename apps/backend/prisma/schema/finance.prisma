@@ -1,0 +1,18 @@
+// Finance domain models
+
+model Transaction {
+  id         Int      @id @default(autoincrement())
+  account    Account  @relation(fields: [accountId], references: [id])
+  accountId  Int
+  amount     Decimal
+  currency   String   @default("USD")
+  note       String?
+  occurredAt DateTime @default(now())
+}
+
+model Budget {
+  id        Int      @id @default(autoincrement())
+  name      String
+  limit     Decimal
+  createdAt DateTime @default(now())
+}

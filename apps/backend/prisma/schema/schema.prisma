@@ -1,0 +1,11 @@
+// Datasource and generator live here only
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// The Prisma Client generator
+generator client {
+  provider = "prisma-client-js"
+}
