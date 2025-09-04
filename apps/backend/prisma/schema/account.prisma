@@ -1,0 +1,20 @@
+// Account domain models
+
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  name      String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  accounts  Account[]
+}
+
+model Account {
+  id           Int           @id @default(autoincrement())
+  user         User          @relation(fields: [userId], references: [id])
+  userId       Int
+  provider     String
+  providerId   String        @unique
+  createdAt    DateTime      @default(now())
+  transactions Transaction[]
+}
